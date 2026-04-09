@@ -1,13 +1,29 @@
+# ── Core framework ─────────────────────────────────────────────────────────────
 flask==3.0.0
 flask-cors==4.0.0
-groq
-fpdf2
+gunicorn
+
+# ── Environment & auth ─────────────────────────────────────────────────────────
 python-dotenv
+supabase
+
+# ── AI / LLM ───────────────────────────────────────────────────────────────────
+groq                        # Groq SDK — Whisper large-v3 + LLaMA via Groq Cloud
+
+# ── Audio processing ───────────────────────────────────────────────────────────
+pydub==0.25.1               # Audio chunking, format conversion, normalisation
+# NOTE: pydub requires ffmpeg to be installed on the system.
+#       On Ubuntu/Render: apt-get install -y ffmpeg
+#       On macOS:         brew install ffmpeg
+
+# ── Document generation ────────────────────────────────────────────────────────
+fpdf2
+reportlab==4.0.7
+
+# ── ML utilities (kept from original) ─────────────────────────────────────────
+transformers==4.35.0
+numpy==1.24.3
+
+# ── Build tools ────────────────────────────────────────────────────────────────
 setuptools
 wheel
-gunicorn
-supabase
-transformers==4.35.0
-pydub==0.25.1
-numpy==1.24.3
-reportlab==4.0.7

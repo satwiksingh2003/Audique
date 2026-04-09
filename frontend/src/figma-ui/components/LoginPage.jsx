@@ -13,6 +13,21 @@ export function LoginPage({ onLoginSuccess }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [infoMessage, setInfoMessage] = useState("");
 
+  const handleForgotPassword = async () => {
+    if (!email) {
+      setErrorMessage("Enter your email address first, then click Forgot password.");
+      return;
+    }
+    setErrorMessage("");
+    setInfoMessage("");
+    const { error } = await supabase.auth.resetPasswordForEmail(email);
+    if (error) {
+      setErrorMessage(error.message);
+    } else {
+      setInfoMessage("Password reset email sent — check your inbox.");
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSubmitting) return;
